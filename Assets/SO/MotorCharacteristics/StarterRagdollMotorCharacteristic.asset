@@ -16,9 +16,6 @@ MonoBehaviour:
   kpVelocity: 40
   kdVelocity: 6
   maxAcceleration: 40
-  kpNeck: 47.3
-  kdNeck: 9.25
-  maxNeckTorque: 10000
-  kpSpine: 10000
-  kdSpine: 0
-  maxSpineTorque: 10000
+  stabilizedJoints:
+  - {fileID: 11400000, guid: 76caa97f811efc64c98f8ca120ab4dbb, type: 2}
+  - {fileID: 11400000, guid: 9cbd302b83576724dbfaaaf5c7027753, type: 2}

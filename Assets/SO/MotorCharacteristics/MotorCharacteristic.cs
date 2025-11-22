@@ -13,13 +13,14 @@ public class RagdollMotorCharacteric : ScriptableObject
     public float maxAcceleration;
 
     // Stability
-    public float kpNeck;
-    public float kdNeck;
-    public float maxNeckTorque;
+    public StabilizedJoint[] stabilizedJoints;
+}
 
-    public float kpSpine;
-    public float kdSpine;
-    public float maxSpineTorque;
-
-    // Jump
+[CreateAssetMenu(fileName = "StabilizedJoint", menuName = "ScriptableObjects/StabilizedJoint", order = 1)]
+public class StabilizedJoint: ScriptableObject
+{
+    public float kp;
+    public float kd;
+    public float maxTorque;
+    public string jointPath;
 }
