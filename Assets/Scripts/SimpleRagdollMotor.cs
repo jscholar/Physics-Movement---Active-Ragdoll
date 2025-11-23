@@ -106,7 +106,6 @@ public class SimpleRagdollMotor : MonoBehaviour
 
     private void TestBalloon()
     {
-        Debug.Log("Balloon activated! Total Mass: " + totalMass);
         float force = totalMass * Physics.gravity.magnitude;
         rootRB.AddForce(Vector3.up * force, ForceMode.Force);
     }
