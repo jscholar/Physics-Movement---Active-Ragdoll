@@ -13,9 +13,4 @@ MonoBehaviour:
   m_Name: StarterRagdollMotorCharacteristic
   m_EditorClassIdentifier: 
   maxSpeed: 2.5
-  kpVelocity: 40
-  kdVelocity: 6
   maxAcceleration: 40
-  stabilizedJoints:
-  - {fileID: 11400000, guid: 76caa97f811efc64c98f8ca120ab4dbb, type: 2}
-  - {fileID: 11400000, guid: 9cbd302b83576724dbfaaaf5c7027753, type: 2}
