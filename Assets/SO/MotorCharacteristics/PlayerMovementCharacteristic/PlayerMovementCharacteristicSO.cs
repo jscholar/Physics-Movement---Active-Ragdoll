@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerMovementCharacteristicSO", menuName = "ScriptableObjects/PlayerMovementCharacteristicSO")]
+[CreateAssetMenu(fileName = "PlayerMovementCharacteristicSO", menuName = "Scriptable Objects/PlayerMovementCharacteristicSO")]
 public class PlayerMovementCharacteristicSO : ScriptableObject
 {
     public float kpVelocity; // Proportional gain for velocity control
