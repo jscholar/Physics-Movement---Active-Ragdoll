@@ -454,6 +454,11 @@ Transform:
   - {fileID: 507790760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1641233987 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3402843306697568726, guid: c8da03836f95cce48be93caa3d1f166a, type: 3}
+  m_PrefabInstance: {fileID: 8263026616473046066}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1828337085 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8149082936453165185, guid: e582600b3923ed14fa9f7d27090495e0, type: 3}
@@ -623,10 +628,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1369678904514915839, guid: c8da03836f95cce48be93caa3d1f166a, type: 3}
+      propertyPath: m_Mass
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1395292738373692391, guid: c8da03836f95cce48be93caa3d1f166a, type: 3}
       propertyPath: m_Radius
       value: 0.04
       objectReference: {fileID: 0}
+    - target: {fileID: 1977034645737252454, guid: c8da03836f95cce48be93caa3d1f166a, type: 3}
+      propertyPath: joints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977034645737252454, guid: c8da03836f95cce48be93caa3d1f166a, type: 3}
+      propertyPath: joints.Array.data[2].rb
+      value: 
+      objectReference: {fileID: 1641233987}
+    - target: {fileID: 1977034645737252454, guid: c8da03836f95cce48be93caa3d1f166a, type: 3}
+      propertyPath: joints.Array.data[2]._debugName
+      value: Pelvis Stabilization
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977034645737252454, guid: c8da03836f95cce48be93caa3d1f166a, type: 3}
+      propertyPath: joints.Array.data[2].stabilizedJointCharacteristic
+      value: 
+      objectReference: {fileID: 11400000, guid: 91ab94a01c398ca469faca7425cb6e2f, type: 2}
     - target: {fileID: 3075650024104765747, guid: c8da03836f95cce48be93caa3d1f166a, type: 3}
       propertyPath: m_Height
       value: 0.24772516
@@ -710,6 +735,10 @@ PrefabInstance:
     - target: {fileID: 6064656492330650357, guid: c8da03836f95cce48be93caa3d1f166a, type: 3}
       propertyPath: m_Center.z
       value: -0.0000000022260553
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298374086848509304, guid: c8da03836f95cce48be93caa3d1f166a, type: 3}
+      propertyPath: m_Mass
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
