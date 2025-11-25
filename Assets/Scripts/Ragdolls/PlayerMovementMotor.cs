@@ -5,21 +5,21 @@ public class PlayerMovementMotor : MonoBehaviour, IFixedUpdateRagdollMotor
     [SerializeField]
     private PlayerMovementCharacteristicSO locoChar;
 
+    private Vector3 prevVelocity = Vector3.zero;
+
     public void FixedUpdateMotor(RagdollContext context, MotorOutput output)
     {
-        if (IsPlayerMovementIntentEmpty(context)) return;
+        Vector3 IntentVector = IntentToWorldSpaceVector(context);
+        Vector3 horizontalVelocity = GetHorizontalVelocity(context);
+        Vector3 errorVector = IntentVector * locoChar.maxSpeed - horizontalVelocity;
 
-        Vector3 steerVector = IntentToWorldSpaceVector(context);
+        Vector3 proportionalComponent = locoChar.kpVelocity * errorVector * context.totalMass;
+        Vector3 derivativeComponent = locoChar.kdVelocity * (horizontalVelocity - prevVelocity) / Time.fixedDeltaTime;
 
-        Vector3 steeringForce = ScaleSteeringVector(context, steerVector);
+        Vector3 steeringForce = proportionalComponent - derivativeComponent;
 
+        prevVelocity = horizontalVelocity;
         output.locomotiveForce += steeringForce;
-    }
-
-    private bool IsPlayerMovementIntentEmpty(RagdollContext context)
-    {
-        Vector2 moveDir = context.inputRouter.CurrentPlayerMoveIntent.moveDir;
-        return moveDir.sqrMagnitude < 0.01f;
     }
 
     private Vector3 IntentToWorldSpaceVector(RagdollContext context)
@@ -32,10 +32,11 @@ public class PlayerMovementMotor : MonoBehaviour, IFixedUpdateRagdollMotor
             inputRouter.CurrentPlayerMoveIntent.moveDir.y);
     }
 
-    private Vector3 ScaleSteeringVector(RagdollContext context, Vector3 scalingVector)
+    private Vector3 GetHorizontalVelocity(RagdollContext context)
     {
-        float scalingForce = context.totalMass * locoChar.maxAcceleration;
-
-        return scalingVector * scalingForce;
+        return new Vector3(
+            context.rootRigidBody.linearVelocity.x,
+            0,
+            context.rootRigidBody.linearVelocity.z);
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 006aba499f014ec4f864ca427029196c, type: 3}
   m_Name: StarterPlayerMovementCharacteristicSO
   m_EditorClassIdentifier: 
-  kpVelocity: 20
-  kdVelocity: 5
+  kpVelocity: 8
+  kdVelocity: 1
+  maxSpeed: 2
   maxAcceleration: 20
