@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100348, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       propertyPath: m_Name
-      value: BoxUnityChan V2 Variant
+      value: Ragdoll_BoxUnityChan V2
       objectReference: {fileID: 0}
     - target: {fileID: 400208, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26,31 +26,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400208, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9998885
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400208, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00023482926
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400208, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00062254816
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400208, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0149238985
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400208, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.026
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400208, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.072
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400208, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 1.71
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400286, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -146,6 +146,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100344, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1977034645737252454}
+    - targetCorrespondingSourceObject: {fileID: 100344, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6091494030810007548}
     - targetCorrespondingSourceObject: {fileID: 100342, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 309255413967163384}
@@ -261,10 +264,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.061873496
-  m_Height: 0.30936748
+  m_Radius: 0.04
+  m_Height: 0.24772516
   m_Direction: 0
-  m_Center: {x: -0.15468374, y: 0, z: 0}
+  m_Center: {x: -0.12386254, y: 5.384219e-10, z: -0.0000000027368083}
 --- !u!54 &7805902756583855267
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -362,7 +365,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.058444813
+  m_Radius: 0.04
   m_Height: 0.23377925
   m_Direction: 0
   m_Center: {x: -0.116889626, y: 0, z: 0}
@@ -463,8 +466,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.048776045
-  m_Center: {x: -0.048776045, y: 0, z: 0}
+  m_Radius: 0.1
+  m_Center: {x: -0.07, y: 0.02, z: 0}
 --- !u!54 &1625433203682673107
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -491,7 +494,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &70123146048597751
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -592,7 +595,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &3991755277155324944
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -675,7 +678,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588693394867889346}
   serializedVersion: 5
-  m_Mass: 1.875
+  m_Mass: 2.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -693,7 +696,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &4539366543607187258
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -717,18 +720,18 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 85.77171
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 30
+    limit: 34.115524
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 0
+    limit: 12.944858
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -792,7 +795,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &5652710957902131132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,6 +854,21 @@ MonoBehaviour:
   - _debugName: Neck Stabilization
     rb: {fileID: 1625433203682673107}
     stabilizedJointCharacteristic: {fileID: 11400000, guid: 91ab94a01c398ca469faca7425cb6e2f, type: 2}
+  - _debugName: Pelvis Stabilization
+    rb: {fileID: 3402843306697568726}
+    stabilizedJointCharacteristic: {fileID: 11400000, guid: 91ab94a01c398ca469faca7425cb6e2f, type: 2}
+--- !u!114 &6091494030810007548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588693394867889356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6504b24eb655745a42e93c9f6c8078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StandUpMotor
 --- !u!1 &588693394867889362 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100326, guid: 6788413dff62c534d8ca610faef3c7a2, type: 3}
@@ -905,7 +923,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &4622652947935085588
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -988,7 +1006,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588693394867889372}
   serializedVersion: 5
-  m_Mass: 1.875
+  m_Mass: 2.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1006,7 +1024,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &977217941284119055
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1026,22 +1044,22 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: -33.040386
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 86.2113
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 30
+    limit: 41.37425
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 0
+    limit: 12.406071
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -1077,8 +1095,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.26966858, y: 0.11279391, z: 0.19510625}
-  m_Center: {x: -0.15611103, y: -0.0056713293, z: -0.0000002384273}
+  m_Size: {x: 0.22830586, y: 0.13706599, z: 0.19510934}
+  m_Center: {x: -0.22129937, y: -0.017807003, z: -0.0000002384271}
 --- !u!54 &4053741469520234935
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1105,7 +1123,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &1040181969123333835
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1125,11 +1143,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: -87.41292
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 20
+    limit: 30.509329
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
@@ -1176,10 +1194,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.061873645
-  m_Height: 0.30936822
+  m_Radius: 0.04
+  m_Height: 0.24836981
   m_Direction: 0
-  m_Center: {x: -0.15468411, y: 0, z: 0}
+  m_Center: {x: -0.12418445, y: -0.0000000014113919, z: -0.0000000022260553}
 --- !u!54 &4371072737069254280
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1277,7 +1295,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05844439
+  m_Radius: 0.04
   m_Height: 0.23377755
   m_Direction: 0
   m_Center: {x: -0.11688878, y: 0, z: 0}
