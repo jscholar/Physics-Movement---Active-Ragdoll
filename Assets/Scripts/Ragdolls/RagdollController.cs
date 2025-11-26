@@ -44,7 +44,7 @@ public struct LocalizedForce
             rbInfo = "null";
         }
 
-        string message = $"[LocalizedForce] Name='{_debug_ForceName}', Force={forceStr}, Type={forceType}, Mode={forceMode}, RB={rbInfo}";
+        string message = $"[LocalizedForce] Name='{_debug_ForceName}', Force={forceStr}, Type={forceType}, Mode={forceMode}, RB={rbInfo}, MAG={force.magnitude}";
 
         if (rb != null && rb.gameObject != null) {
             Debug.Log(message, rb.gameObject);
@@ -73,12 +73,14 @@ public class MotorOutput
 public struct RagdollContext
 {
     public Rigidbody rootRigidBody;
+    public Rigidbody[] rigidbodies;
     public PlayerInputRouter inputRouter;
     public RagdollCharacteristicSO characteristic;
     public float totalMass;
+    public Vector3 worldCoM;
 }
 
-interface IRagdollMotor{ }
+interface IRagdollMotor { }
 
 interface IFixedUpdateRagdollMotor : IRagdollMotor
 {
@@ -106,6 +108,9 @@ public class RagdollController : MonoBehaviour
     [SerializeField]
     private RagdollCharacteristicSO ragdollCharacteristic;
 
+    private MotorOutput _debug_UpdateOutput;
+    private MotorOutput _debug_FixedUpdateOutput;
+
     private void Start()
     {
         InitRagdollContext();
@@ -116,18 +121,19 @@ public class RagdollController : MonoBehaviour
     {
         MotorOutput motorOutput = new MotorOutput();
 
-        foreach (IRagdollMotor motor in motors)
-        {
+        foreach (IRagdollMotor motor in motors) {
             if (!(motor is IUpdateRagdollMotor updateMotor)) continue;
 
             updateMotor.UpdateMotor(ragdollContext, motorOutput);
         }
 
         ApplyForces(motorOutput);
+        _debug_UpdateOutput = motorOutput;
     }
 
     private void FixedUpdate()
     {
+        UpdateRagdollCoM();
         MotorOutput motorOutput = new MotorOutput();
 
         foreach (IRagdollMotor motor in motors) {
@@ -136,11 +142,8 @@ public class RagdollController : MonoBehaviour
             updateMotor.FixedUpdateMotor(ragdollContext, motorOutput);
         }
 
-        foreach (LocalizedForce force in motorOutput.localizedForces) {
-            force.Log();
-        }
-
         ApplyForces(motorOutput);
+        _debug_FixedUpdateOutput = motorOutput;
     }
 
     private void ApplyForces(MotorOutput motorOutput)
@@ -151,9 +154,7 @@ public class RagdollController : MonoBehaviour
 
     private void ResolveLocomotiveForce(MotorOutput motorOutput)
     {
-        this.ragdollContext.rootRigidBody.AddForce(
-            motorOutput.locomotiveForce,
-            ForceMode.Force);
+        this.ragdollContext.rootRigidBody.AddForce(motorOutput.locomotiveForce, ForceMode.Force);
     }
 
     private void ResolveLocalizedForces(MotorOutput motorOutput)
@@ -175,14 +176,44 @@ public class RagdollController : MonoBehaviour
         this.ragdollContext = new RagdollContext
         {
             rootRigidBody = GetComponent<Rigidbody>(),
+            rigidbodies = this.transform.parent.GetComponentsInChildren<Rigidbody>(),
             inputRouter = this.inputRouter,
             characteristic = this.ragdollCharacteristic,
-            totalMass = MassUtils.GetTotalMass(this.gameObject)
+            totalMass = MassUtils.GetTotalMass(this.gameObject),
         };
+    }
+
+    private void UpdateRagdollCoM()
+    {
+        this.ragdollContext.worldCoM = MassUtils.GetWorldCenterOfMass(ragdollContext.rigidbodies, ragdollContext.totalMass);
     }
 
     private void InitRagdollMotors()
     {
         motors = GetComponents<IRagdollMotor>();
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (_debug_UpdateOutput == null) return;
+        if (_debug_FixedUpdateOutput == null) return;
+
+
+        // Locomotive Gizmo
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(
+            this.ragdollContext.rootRigidBody.position,
+            this.ragdollContext.rootRigidBody.position+ this._debug_FixedUpdateOutput.locomotiveForce
+        );
+
+        foreach(LocalizedForce force in _debug_FixedUpdateOutput.localizedForces) {
+            if (force._debug_ForceName == "Spine Stabilization") {
+                Gizmos.color = Color.aliceBlue;
+                Gizmos.DrawLine(force.rb.worldCenterOfMass, force.force);
+            }
+        }
+
+        Gizmos.color = Color.turquoise;
+        Gizmos.DrawWireSphere(ragdollContext.worldCoM, 0.2f);
     }
 }
