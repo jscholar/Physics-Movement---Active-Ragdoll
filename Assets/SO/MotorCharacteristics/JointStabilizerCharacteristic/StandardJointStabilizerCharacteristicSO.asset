@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cfe138c9366cd744b8606eadcaa4c52, type: 3}
-  m_Name: StandardStabilizedJointSO
-  m_EditorClassIdentifier: Assembly-CSharp::StabilizedJointCharacteristic
-  kp: 10
+  m_Script: {fileID: 11500000, guid: e30c10b77df45bf4696ee466cd781a5b, type: 3}
+  m_Name: StandardJointStabilizerCharacteristicSO
+  m_EditorClassIdentifier: Assembly-CSharp::JointStabilizerCharacteristicSO
+  kp: 20
+  kd: 2
