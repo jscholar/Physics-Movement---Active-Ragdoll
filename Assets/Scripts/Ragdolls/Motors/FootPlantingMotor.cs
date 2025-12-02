@@ -2,7 +2,7 @@ using System;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class FootPlantingMotor : MonoBehaviour, IFixedUpdateRagdollMotor
+public class FootPlantingMotor : RagdollMotor
 {
     [SerializeField]
     Transform leftFoot;
@@ -10,7 +10,7 @@ public class FootPlantingMotor : MonoBehaviour, IFixedUpdateRagdollMotor
     [SerializeField]
     Transform rightFoot;
 
-    public void FixedUpdateMotor(RagdollContext context, MotorOutput output)
+    public override void FixedUpdateMotor(RagdollContext context, MotorOutput output)
     {
     }
 }

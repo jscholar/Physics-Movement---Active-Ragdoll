@@ -21,7 +21,7 @@ public class JointStabilzerEntry
     }
 }
 
-public class JointStabilizerMotor : MonoBehaviour, IFixedUpdateRagdollMotor
+public class JointStabilizerMotor : RagdollMotor
 {
     [SerializeField]
     List<JointStabilzerEntry> joints;
@@ -35,7 +35,7 @@ public class JointStabilizerMotor : MonoBehaviour, IFixedUpdateRagdollMotor
         }
     }
 
-    public void FixedUpdateMotor(RagdollContext context, MotorOutput output)
+    public override void FixedUpdateMotor(RagdollContext context, MotorOutput output)
     {
         foreach (JointStabilzerEntry entry in joints) {
 

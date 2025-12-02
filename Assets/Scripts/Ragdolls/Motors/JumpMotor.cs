@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class JumpMotor : MonoBehaviour, IUpdateRagdollMotor
+public class JumpMotor : RagdollMotor
 {
     private float lastJumpTime = -Mathf.Infinity;
 
     // Update is called once per frame
-    public void UpdateMotor(RagdollContext context, MotorOutput motorOutput)
+    public override void UpdateMotor(RagdollContext context, MotorOutput motorOutput)
     {
         if (!IsCanJump(context)) {
             return;

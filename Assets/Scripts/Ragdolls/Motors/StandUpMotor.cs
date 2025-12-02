@@ -1,12 +1,12 @@
 using UnityEngine;
 
 // Applies a Vertical Force to a RB to maintain a vertical distance form the ground
-public class StandUpMotor : MonoBehaviour, IFixedUpdateRagdollMotor
+public class StandUpMotor : RagdollMotor
 {
     private float _TEMP_desiredDistance = 1.5f; // Todo: Replace with SO
     private float _TEMP_springKp = 1.5f;
 
-    public void FixedUpdateMotor(RagdollContext context, MotorOutput output)
+    public override void FixedUpdateMotor(RagdollContext context, MotorOutput output)
     {
         if (!Physics.Raycast(
             context.rootRigidBody.position,

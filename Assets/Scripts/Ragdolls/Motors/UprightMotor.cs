@@ -11,7 +11,7 @@ public class StabilizedJointEntry
     public Vector3 localUp = Vector3.up;
 }
 
-public class UprightMotor : MonoBehaviour, IFixedUpdateRagdollMotor
+public class UprightMotor : RagdollMotor
 {
     [SerializeField]
     private List<StabilizedJointEntry> joints = new();
@@ -21,7 +21,7 @@ public class UprightMotor : MonoBehaviour, IFixedUpdateRagdollMotor
     Vector3 desiredOrientation = Vector3.up;
     Vector3 debugLine = Vector3.zero;
 
-    public void FixedUpdateMotor(RagdollContext context, MotorOutput output)
+    public override void FixedUpdateMotor(RagdollContext context, MotorOutput output)
     {
         foreach(StabilizedJointEntry joint in this.joints) {
             Vector3 torque = GetJointTorque(joint);

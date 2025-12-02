@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class PlayerMovementMotor : MonoBehaviour, IFixedUpdateRagdollMotor
+public class PlayerMovementMotor : RagdollMotor
 {
     [SerializeField]
     private PlayerMovementCharacteristicSO locoChar;
 
     private Vector3 prevVelocity = Vector3.zero;
 
-    public void FixedUpdateMotor(RagdollContext context, MotorOutput output)
+    public override void FixedUpdateMotor(RagdollContext context, MotorOutput output)
     {
         Vector3 IntentVector = IntentToWorldSpaceVector(context);
         Vector3 horizontalVelocity = GetHorizontalVelocity(context);

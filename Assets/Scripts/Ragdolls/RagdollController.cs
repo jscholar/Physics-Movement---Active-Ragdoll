@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public class RagdollController : MonoBehaviour
 {
-    private IRagdollMotor[] motors;
+    private RagdollMotor[] motors;
     private RagdollContext ragdollContext;
 
     [SerializeField]
@@ -29,10 +29,8 @@ public class RagdollController : MonoBehaviour
     {
         MotorOutput motorOutput = new MotorOutput();
 
-        foreach (IRagdollMotor motor in motors) {
-            if (!(motor is IUpdateRagdollMotor updateMotor)) continue;
-
-            updateMotor.UpdateMotor(ragdollContext, motorOutput);
+        foreach (RagdollMotor motor in motors) {
+            motor.UpdateMotor(ragdollContext, motorOutput);
         }
 
         ApplyForces(motorOutput);
@@ -44,10 +42,8 @@ public class RagdollController : MonoBehaviour
         UpdateRagdollCoM();
         MotorOutput motorOutput = new MotorOutput();
 
-        foreach (IRagdollMotor motor in motors) {
-            if (!(motor is IFixedUpdateRagdollMotor updateMotor)) continue;
-
-            updateMotor.FixedUpdateMotor(ragdollContext, motorOutput);
+        foreach (RagdollMotor motor in motors) {
+            motor.FixedUpdateMotor(ragdollContext, motorOutput);
         }
 
         ApplyForces(motorOutput);
@@ -98,7 +94,7 @@ public class RagdollController : MonoBehaviour
 
     private void InitRagdollMotors()
     {
-        motors = GetComponents<IRagdollMotor>();
+        motors = GetComponents<RagdollMotor>();
     }
 
     private void OnDrawGizmos()
