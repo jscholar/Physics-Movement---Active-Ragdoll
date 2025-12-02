@@ -7,8 +7,9 @@ using UnityEngine;
  */
 public class RagdollController : MonoBehaviour
 {
-    private RagdollMotor[] motors;
     private RagdollContext ragdollContext;
+    private RagdollSensor[] sensors;
+    private RagdollMotor[] motors;
 
     [SerializeField]
     private PlayerInputRouter inputRouter;
@@ -22,13 +23,13 @@ public class RagdollController : MonoBehaviour
     private void Start()
     {
         InitRagdollContext();
+        InitRagdollSensors();
         InitRagdollMotors();
     }
 
     private void Update()
     {
         MotorOutput motorOutput = new MotorOutput();
-
         foreach (RagdollMotor motor in motors) {
             motor.UpdateMotor(ragdollContext, motorOutput);
         }
@@ -39,9 +40,12 @@ public class RagdollController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        UpdateRagdollCoM();
-        MotorOutput motorOutput = new MotorOutput();
+        foreach(RagdollSensor sensor in sensors) {
+            sensor.GetReading(ragdollContext);
+        }
+        ragdollContext.readingStore.Log();
 
+        MotorOutput motorOutput = new MotorOutput();
         foreach (RagdollMotor motor in motors) {
             motor.FixedUpdateMotor(ragdollContext, motorOutput);
         }
@@ -84,17 +88,18 @@ public class RagdollController : MonoBehaviour
             inputRouter = this.inputRouter,
             characteristic = this.ragdollCharacteristic,
             totalMass = MassUtils.GetTotalMass(this.gameObject),
+            readingStore = new ReadingStore()
         };
-    }
-
-    private void UpdateRagdollCoM()
-    {
-        this.ragdollContext.worldCoM = MassUtils.GetWorldCenterOfMass(ragdollContext.rigidbodies, ragdollContext.totalMass);
     }
 
     private void InitRagdollMotors()
     {
         motors = GetComponents<RagdollMotor>();
+    }
+
+    private void InitRagdollSensors()
+    {
+        sensors = GetComponents<RagdollSensor>();
     }
 
     private void OnDrawGizmos()
@@ -117,7 +122,9 @@ public class RagdollController : MonoBehaviour
             }
         }
 
-        Gizmos.color = Color.turquoise;
-        Gizmos.DrawWireSphere(ragdollContext.worldCoM, 0.2f);
+        if (ragdollContext.readingStore.TryGet<CoMReading>(out var comReading)) {
+            Gizmos.color = Color.turquoise;
+            Gizmos.DrawWireSphere(comReading.value, 0.3f);
+        };
     }
 }

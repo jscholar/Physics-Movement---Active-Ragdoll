@@ -119,6 +119,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &172039180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6891188723948751023, guid: af83cd02da28d474d9440ecdeb82dc2d, type: 3}
+  m_PrefabInstance: {fileID: 8998595974743124227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &172039183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172039180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc35a5c43fc5e8746a0c0c3282fa51bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootContactSensor
 --- !u!1 &507790759
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,18 +922,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1603256829007027084, guid: af83cd02da28d474d9440ecdeb82dc2d, type: 3}
-      propertyPath: m_Height
-      value: 0.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603256829007027084, guid: af83cd02da28d474d9440ecdeb82dc2d, type: 3}
-      propertyPath: m_Center.x
-      value: -0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603256829007027084, guid: af83cd02da28d474d9440ecdeb82dc2d, type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1872205031850787797, guid: af83cd02da28d474d9440ecdeb82dc2d, type: 3}
       propertyPath: inputRouter
       value: 
@@ -965,22 +970,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoxUnityChan V4
       objectReference: {fileID: 0}
-    - target: {fileID: 7659486932965821484, guid: af83cd02da28d474d9440ecdeb82dc2d, type: 3}
-      propertyPath: m_Height
-      value: 0.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 7659486932965821484, guid: af83cd02da28d474d9440ecdeb82dc2d, type: 3}
-      propertyPath: m_Center.x
-      value: -0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 7659486932965821484, guid: af83cd02da28d474d9440ecdeb82dc2d, type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6891188723948751023, guid: af83cd02da28d474d9440ecdeb82dc2d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 172039183}
   m_SourcePrefab: {fileID: 100100000, guid: af83cd02da28d474d9440ecdeb82dc2d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
