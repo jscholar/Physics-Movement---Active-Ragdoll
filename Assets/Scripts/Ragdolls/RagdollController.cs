@@ -43,7 +43,6 @@ public class RagdollController : MonoBehaviour
         foreach(RagdollSensor sensor in sensors) {
             sensor.GetReading(ragdollContext);
         }
-        ragdollContext.readingStore.Log();
 
         MotorOutput motorOutput = new MotorOutput();
         foreach (RagdollMotor motor in motors) {
@@ -107,20 +106,6 @@ public class RagdollController : MonoBehaviour
         if (_debug_UpdateOutput == null) return;
         if (_debug_FixedUpdateOutput == null) return;
 
-
-        // Locomotive Gizmo
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(
-            this.ragdollContext.rootRigidBody.position,
-            this.ragdollContext.rootRigidBody.position+ this._debug_FixedUpdateOutput.locomotiveForce
-        );
-
-        foreach(LocalizedForce force in _debug_FixedUpdateOutput.localizedForces) {
-            if (force._debug_ForceName == "Spine Stabilization") {
-                Gizmos.color = Color.aliceBlue;
-                Gizmos.DrawLine(force.rb.worldCenterOfMass, force.force);
-            }
-        }
 
         if (ragdollContext.readingStore.TryGet<CoMReading>(out var comReading)) {
             Gizmos.color = Color.turquoise;

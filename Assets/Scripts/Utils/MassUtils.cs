@@ -38,8 +38,6 @@ public class MassUtils : MonoBehaviour
             totalMass += rb.mass;
             center += rb.position * rb.mass;
         }
-        Debug.Log(totalMass);
-
 
         return center / totalMass;
     }
