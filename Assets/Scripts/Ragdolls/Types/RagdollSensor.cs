@@ -46,3 +46,21 @@ public abstract class RagdollSensor: MonoBehaviour {
 public class CoMReading {
     public Vector3 value;
 }
+
+public enum BalanceState {
+    Balanced,
+    Unbalanced,
+    Stepping,
+    Falling
+}
+
+public class RaibertSensorReading
+{
+    public bool hasLeftFootTarget;
+    public RaycastHit leftFootTarget;
+
+    public bool hasRightFootTarget;
+    public RaycastHit rightFootTarget;
+
+    public BalanceState balanceState;
+}
