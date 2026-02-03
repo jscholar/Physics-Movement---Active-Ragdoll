@@ -9,6 +9,8 @@ public class JointStabilzerEntry
 {
     public string _debugName;
     public Joint joint;
+
+    [Tooltip("The child rigid body")]
     public Rigidbody rb;
     public JointStabilizerCharacteristicSO characteristicSO;
 
