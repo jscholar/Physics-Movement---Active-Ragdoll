@@ -39,8 +39,8 @@ public class UprightMotor : RagdollMotor
 
     private Vector3 GetJointTorque(StabilizedJointEntry joint)
     {
-        Vector3 actualLocalUp = joint.rb.transform.TransformDirection(joint.localUp);
-        Quaternion qErr = Quaternion.FromToRotation(actualLocalUp, Vector3.up);
+        Vector3 localUp = joint.localUp != Vector3.zero ? joint.localUp : joint.rb.transform.up;
+        Quaternion qErr = Quaternion.FromToRotation(localUp, Vector3.up);
 
         qErr.ToAngleAxis(out float angle, out Vector3 axis);
 
@@ -55,10 +55,10 @@ public class UprightMotor : RagdollMotor
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.purple;
+        Gizmos.color = Color.cyan;
         Gizmos.DrawLine(this.transform.position, this.transform.position + debugLine);
 
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(this.transform.position, this.transform.position + Vector3.up);
+        Gizmos.DrawLine(this.transform.position, this.transform.position + Vector3.up * 20f);
     }
 }
