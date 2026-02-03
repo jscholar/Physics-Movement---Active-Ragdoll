@@ -15,6 +15,9 @@ public class RagdollController : MonoBehaviour
     private PlayerInputRouter inputRouter;
 
     [SerializeField]
+    private Rigidbody rootRigidbody;
+
+    [SerializeField]
     private RagdollCharacteristicSO ragdollCharacteristic;
 
     private MotorOutput _debug_UpdateOutput;
@@ -82,8 +85,8 @@ public class RagdollController : MonoBehaviour
     {
         this.ragdollContext = new RagdollContext
         {
-            rootRigidBody = GetComponent<Rigidbody>(),
-            rigidbodies = this.transform.parent.GetComponentsInChildren<Rigidbody>(),
+            rootRigidBody = this.rootRigidbody ?? this.GetComponent<Rigidbody>(),
+            rigidbodies = this.GetComponentsInChildren<Rigidbody>(),
             inputRouter = this.inputRouter,
             characteristic = this.ragdollCharacteristic,
             totalMass = MassUtils.GetTotalMass(this.gameObject),
