@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30c10b77df45bf4696ee466cd781a5b, type: 3}
   m_Name: StandardJointStabilizerCharacteristicSO
   m_EditorClassIdentifier: Assembly-CSharp::JointStabilizerCharacteristicSO
-  kp: 20
+  kp: 68.4
   kd: 2

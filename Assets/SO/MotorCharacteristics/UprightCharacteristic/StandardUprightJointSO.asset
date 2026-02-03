@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cfe138c9366cd744b8606eadcaa4c52, type: 3}
   m_Name: StandardUprightJointSO
   m_EditorClassIdentifier: Assembly-CSharp::StabilizedJointCharacteristic
-  kp: 19.9
-  kd: 0
-  maxTorque: 0
+  kp: 1004
+  kd: 7.29
+  maxTorque: 45.5
