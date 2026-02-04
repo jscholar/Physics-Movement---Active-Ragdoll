@@ -30,7 +30,7 @@ public class RaibertFSMUnbalanced : RaibertFSMState
             targetTransform = raibertContext.rightFootTarget;
         }
 
-        p2 = (comGround - (closerFoot.position - comGround)) * raibertContext.characteristicSO.stepOvercompensation;
+        p2 = closerFoot.position + Vector3.ClampMagnitude(2 * (comGround - closerFoot.position), raibertContext.characteristicSO.strideLength);
         p2.y = closerFoot.position.y;
 
         p1 = (p0 + p2) / 2 + Vector3.up * raibertContext.characteristicSO.stepHeight;
@@ -43,11 +43,6 @@ public class RaibertFSMUnbalanced : RaibertFSMState
         p2 = p2 - ragdollContext.rootRigidBody.position;
 
         p2 *= raibertContext.characteristicSO.stepOvercompensation;
-
-        // Clamp p2 to be within reachable distance from other foot
-        Vector3 stride = p2 - (closerFoot.position - ragdollContext.rootRigidBody.position);
-        Vector3.ClampMagnitude(stride, raibertContext.characteristicSO.strideLength);
-        p2 = (closerFoot.position - ragdollContext.rootRigidBody.position) + stride;
 
         _isStepping = true;
 
@@ -86,5 +81,10 @@ public class RaibertFSMUnbalanced : RaibertFSMState
         Vector3 m1 = Vector3.Lerp(p0, p1, t);
         Vector3 m2 = Vector3.Lerp(p1, p2, t);
         return Vector3.Lerp(m1, m2, t);
+    }
+
+    private void OnDrawGizmos()
+    {
+        
     }
 }

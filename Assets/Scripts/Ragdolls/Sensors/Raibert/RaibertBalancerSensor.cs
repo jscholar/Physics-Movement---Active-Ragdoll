@@ -18,8 +18,6 @@ public struct RaibertContext
  */
 public class RaibertBalancerSensor : RagdollSensor
 {
-
-
     [SerializeField]
     private RaibertContext raibertContext;
 
