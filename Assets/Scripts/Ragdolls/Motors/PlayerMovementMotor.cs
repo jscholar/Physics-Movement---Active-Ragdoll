@@ -5,11 +5,14 @@ public class PlayerMovementMotor : RagdollMotor
     [SerializeField]
     private PlayerMovementCharacteristicSO locoChar;
 
+    [SerializeField]
+    private Camera cam;
+
     private Vector3 prevVelocity = Vector3.zero;
 
     public override void FixedUpdateMotor(RagdollContext context, MotorOutput output)
     {
-        Vector3 IntentVector = IntentToWorldSpaceVector(context);
+        Vector3 IntentVector = IntentToCameraRelativeVector(context);
         Vector3 horizontalVelocity = GetHorizontalVelocity(context);
         Vector3 errorVector = IntentVector * locoChar.maxSpeed - horizontalVelocity;
 
@@ -22,14 +25,20 @@ public class PlayerMovementMotor : RagdollMotor
         output.locomotiveForce += steeringForce;
     }
 
-    private Vector3 IntentToWorldSpaceVector(RagdollContext context)
+    private Vector3 IntentToCameraRelativeVector(RagdollContext context)
     {
         PlayerInputRouter inputRouter = context.inputRouter;
 
-        return new Vector3(
+        Vector3 absoluteDir = new Vector3(
             inputRouter.CurrentPlayerMoveIntent.moveDir.x,
             0,
             inputRouter.CurrentPlayerMoveIntent.moveDir.y);
+
+        Vector3 forward = cam.transform.forward;
+        forward.y = 0;
+
+        Vector3 localDir = Quaternion.FromToRotation(Vector3.forward, forward.normalized) * absoluteDir;
+        return localDir.normalized;
     }
 
     private Vector3 GetHorizontalVelocity(RagdollContext context)
